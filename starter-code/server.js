@@ -35,19 +35,25 @@ app.use(express.static('./public'));
 
 // REVIEW: Routes for requesting HTML resources
 app.get('/new', function(request, response) {
-  // COMMENT: What number(s) of the full-stack-diagram.png image correspond to the following line of code? 1
-  // Which method of article.js is interacting with this particular piece of `server.js`?-- Article.prototype.toHtml????
+  // COMMENT: What number(s) of the full-stack-diagram.png image correspond to the following line of code?
+  //     5
+  // Which method of article.js is interacting with this particular piece of `server.js`?--
+  //    Article.fetchAll() ????
   // What part of CRUD is being enacted/managed by this particular piece of code?
   // Put your response here...
+  //   Read
   response.sendFile('new.html', {root: './public'});
 });
 
 
 // REVIEW: Routes for making API calls to use CRUD Operations on our database
 app.get('/articles', function(request, response) {
-  // COMMENT: What number(s) of the full-stack-diagram.png image correspond to the following line of code? 3&4.
-  // Which method of article.js is interacting with this particular piece of `server.js`? fetchAll??
-  // What part of CRUD is being enacted/managed by this particular piece of code? read.
+  // COMMENT: What number(s) of the full-stack-diagram.png image correspond to the following line of code?
+  //   3&4.
+  // Which method of article.js is interacting with this particular piece of `server.js`?
+  //  fetchAll??
+  // What part of CRUD is being enacted/managed by this particular piece of code?
+  //  Read.
   // Put your response here...
   client.query('SELECT * FROM articles')
   .then(function(result) {
@@ -59,9 +65,12 @@ app.get('/articles', function(request, response) {
 });
 
 app.post('/articles', function(request, response) {
-  // COMMENT: What number(s) of the full-stack-diagram.png image correspond to the following line of code? 4
+  // COMMENT: What number(s) of the full-stack-diagram.png image correspond to the following line of code?
+  //   3+4
    //Which method of article.js is interacting with this particular piece of `server.js`????????
-  //  What part of CRUD is being enacted/managed by this particular piece of code? create.
+  //   insertRecord()
+  //  What part of CRUD is being enacted/managed by this particular piece of code?
+  //  Create.
   // Put your response here...
   client.query(
     `
@@ -87,9 +96,12 @@ app.post('/articles', function(request, response) {
 });
 
 app.put('/articles/:id', function(request, response) {
-  // COMMENT: What number(s) of the full-stack-diagram.png image correspond to the following line of code? 4
+  // COMMENT: What number(s) of the full-stack-diagram.png image correspond to the following line of code?
+  //   3+4
   // Which method of article.js is interacting with this particular piece of `server.js`?
-  // What part of CRUD is being enacted/managed by this particular piece of code? update.
+  //  updateRecord()
+  // What part of CRUD is being enacted/managed by this particular piece of code?
+  //  Update
   // Put your response here...
   client.query(
     `UPDATE articles
