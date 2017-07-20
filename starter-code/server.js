@@ -36,7 +36,7 @@ app.use(express.static('./public'));
 // REVIEW: Routes for requesting HTML resources
 app.get('/new', function(request, response) {
   // COMMENT: What number(s) of the full-stack-diagram.png image correspond to the following line of code?
-  //     5
+  //    1- 5
   // Which method of article.js is interacting with this particular piece of `server.js`?--
   //    Article.fetchAll() ????
   // What part of CRUD is being enacted/managed by this particular piece of code?
@@ -49,7 +49,7 @@ app.get('/new', function(request, response) {
 // REVIEW: Routes for making API calls to use CRUD Operations on our database
 app.get('/articles', function(request, response) {
   // COMMENT: What number(s) of the full-stack-diagram.png image correspond to the following line of code?
-  //   3&4.
+  //   1-5.
   // Which method of article.js is interacting with this particular piece of `server.js`?
   //  fetchAll??
   // What part of CRUD is being enacted/managed by this particular piece of code?
@@ -66,7 +66,7 @@ app.get('/articles', function(request, response) {
 
 app.post('/articles', function(request, response) {
   // COMMENT: What number(s) of the full-stack-diagram.png image correspond to the following line of code?
-  //   3+4
+  //   1-5
    //Which method of article.js is interacting with this particular piece of `server.js`????????
   //   insertRecord()
   //  What part of CRUD is being enacted/managed by this particular piece of code?
@@ -97,7 +97,7 @@ app.post('/articles', function(request, response) {
 
 app.put('/articles/:id', function(request, response) {
   // COMMENT: What number(s) of the full-stack-diagram.png image correspond to the following line of code?
-  //   3+4
+  //   1-5
   // Which method of article.js is interacting with this particular piece of `server.js`?
   //  updateRecord()
   // What part of CRUD is being enacted/managed by this particular piece of code?
@@ -128,9 +128,12 @@ app.put('/articles/:id', function(request, response) {
 });
 
 app.delete('/articles/:id', function(request, response) {
-  // COMMENT: What number(s) of the full-stack-diagram.png image correspond to the following line of code? 3&4
+  // COMMENT: What number(s) of the full-stack-diagram.png image correspond to the following line of code?
+  //  1-5
   // Which method of article.js is interacting with this particular piece of `server.js`?
-  // What part of CRUD is being enacted/managed by this particular piece of code? destroy.
+  //    deletRecord()
+  // What part of CRUD is being enacted/managed by this particular piece of code?
+  //   Destroy.
   // Put your response here...
   client.query(
     `DELETE FROM articles WHERE article_id=$1;`,
@@ -145,9 +148,11 @@ app.delete('/articles/:id', function(request, response) {
 });
 
 app.delete('/articles', function(request, response) {
-  // COMMENT: What number(s) of the full-stack-diagram.png image correspond to the following line of code?  5 & 4 & 3 ???
-  // Which method of article.js is interacting with this particular piece of `server.js`? Article.prototype.deleteRecord
-  //  What part of CRUD is being enacted/managed by this particular piece of code? destroy.
+  // COMMENT: What number(s) of the full-stack-diagram.png image correspond to the following line of code
+  //  1-5
+  // Which method of article.js is interacting with this particular piece of `server.js`? //   Article.prototype.deleteRecord
+  //  What part of CRUD is being enacted/managed by this particular piece of code?
+  //  Destroy.
   // Put your response here...
   client.query(
     'DELETE FROM articles;'
@@ -163,7 +168,10 @@ app.delete('/articles', function(request, response) {
 
 
 
-// COMMENT: What is this function invocation doing?-- This is calling the loadDB function that loads the data after its been put together by the loadArticles function. Why is this being called before the functions??? its been hoisted.
+// COMMENT: What is this function invocation doing?--
+//   This is calling the loadDB function that loads the data after its been put together by the loadArticles function.
+//Why is this being called before the functions?
+//  It has been hoisted.
 // Put your response here...
 loadDB();
 
@@ -175,9 +183,12 @@ app.listen(PORT, function() {
 //////// ** DATABASE LOADER ** ////////
 ////////////////////////////////////////
 function loadArticles() {
-  // COMMENT: What number(s) of the full-stack-diagram.png image correspond to the following line of code?  3&4??
-  // Which method of article.js is interacting with this particular piece of `server.js`? ???
-  // What part of CRUD is being enacted/managed by this particular piece of code? Update?
+  // COMMENT: What number(s) of the full-stack-diagram.png image correspond to the following line of code?
+  //   1-5!
+  // Which method of article.js is interacting with this particular piece of `server.js`?
+  //   Article.loadAll();
+  // What part of CRUD is being enacted/managed by this particular piece of code?
+  //  Update
   // Put your response here...
   client.query('SELECT COUNT(*) FROM articles')
   .then(function(result) {
@@ -204,7 +215,12 @@ function loadArticles() {
 }
 
 function loadDB() {
-  // COMMENT: What number(s) of the full-stack-diagram.png image correspond to the following line of code? Which method of article.js is interacting with this particular piece of `server.js`? What part of CRUD is being enacted/managed by this particular piece of code?
+  // COMMENT: What number(s) of the full-stack-diagram.png image correspond to the following line of code?
+  // 1-5
+  //Which method of article.js is interacting with this particular piece of `server.js`?
+  //   Article.prototype.toHtml();
+  // What part of CRUD is being enacted/managed by this particular piece of code?
+  // Create, Update
   // Put your response here...
   client.query(`
     CREATE TABLE IF NOT EXISTS articles (
