@@ -5,6 +5,7 @@
 
 const fs = require('fs');
 const express = require('express');
+const pg = require('pg');
 
 // REVIEW: Require in body-parser for post requests in our server. If you want to know more about what this does, read the docs!
 const bodyParser = require('body-parser');
@@ -21,7 +22,7 @@ const conString = 'postgres://localhost:5432/kilavolt';
 //       This is how it knows the URL and, for Windows and Linux users, our username and password for our
 //       database when client.connect is called on line 26. Thus, we need to pass our conString into our
 //       pg.Client() call.
-const client = new pg.Client('postgres://localhost:5432/kilavolt');
+const client = new pg.Client(conString);
 
 // REVIEW: Use the client object to connect to our DB.
 client.connect();
